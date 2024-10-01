@@ -1,0 +1,29 @@
+<h1 class="w-max h-[50px] bg-[red]">Сбор данных о товаре</h1>
+<br>
+<h2 class="font-semibold">Добавление товаров с OZ.BY</h2>
+
+<%= form_with url: products_path, method: :post, local: true do |form| %>
+  <div class="mb-4">
+    <%= form.label :urls, "Введите ссылки на товары (каждая ссылка с новой строки):" %>
+    <%= form.text_area :urls, rows: 10 %>
+  </div>
+
+  <div class="mb-6">
+    <%= form.submit "Добавить товары" %>
+  </div>
+<% end %>
+
+<% if @errors.present? %>
+  <h2 class="font-semibold">Ошибки:</h2>
+  <ul>
+    <% @errors.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<br>
+
+<a class="text-blue-500" href="<%= products_path(@product) %>">Статистика товаров</a>
+
+

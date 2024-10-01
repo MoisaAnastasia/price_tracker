@@ -1,0 +1,48 @@
+<h1 >Вывод статистики для товаров</h1>
+<br>
+<br>
+<%= form_with url: products_path, method: :get, local: true do |form| %>
+  <div>
+    <%= form.label :query, "Введите ссылку на товар или текст для поиска:" %><br>
+    <%= form.text_field :query %>
+  </div>
+  <div><%= form.submit "Найти" %></div>
+<% end %>
+
+<% if @error.present? %>
+  <p style="color: red;"><%= @error %></p>
+<% end %>
+
+<% if @products.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Товар</th>
+        <% (1..Time.days_in_month(Time.zone.now.month)).each do |day| %>
+          <th><%= day %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td>
+            <div>
+              <a href="<%= product.url %>" target="_blank">
+                <img src="<%= product.image_url %>" alt="<%= product.name %>" style="width: 100px;"><br>
+                <%= product.name %>
+              </a>
+            </div>
+          </td>
+          <% (1..Time.days_in_month(Time.zone.now.month)).each do |day| %>
+            <td>
+              <%= @price_data[product.id][day] %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<br>
+<a href="<%= new_product_path(@product) %>">Вернуться к добавлению товара </a>
