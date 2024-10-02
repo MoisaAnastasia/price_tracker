@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
         end
       else
         @products = Product.where('name LIKE ?', "%#{@query}%")
-        @error = 'Товары не найдены' if @products.empty?
+        @error = 'Товар не найден' if @products.empty?
       end
     end
 
