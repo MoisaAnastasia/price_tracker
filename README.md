@@ -12,11 +12,12 @@ To run the project, the following is installed on your computer as a dependency:
 - Ruby version 3.2.2
 - Rails version 7.0.3
 - SQLite version 3.8.0
+- Tailwindcss
 
 ## Installation
 
 1. Clone the repository:
-    git clone https://github.com/your_username/your_project.git
+    git clone https://github.com/MoisaAnastasia/price_tracker
 
 2. Go to the project folder:
     cd price_tracker

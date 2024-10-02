@@ -1,4 +1,4 @@
-<h1 >Вывод статистики для товаров</h1>
+<h1 class="font-semibold text-4xl">Вывод статистики для товаров</h1>
 <br>
 <br>
 <%= form_with url: products_path, method: :get, local: true do |form| %>
@@ -6,7 +6,7 @@
     <%= form.label :query, "Введите ссылку на товар или текст для поиска:" %><br>
     <%= form.text_field :query %>
   </div>
-  <div><%= form.submit "Найти" %></div>
+  <div><%= form.submit "Найти", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"%></div>
 <% end %>
 
 <% if @error.present? %>
@@ -28,7 +28,7 @@
         <tr>
           <td>
             <div>
-              <a href="<%= product.url %>" target="_blank">
+              <a class="text-blue-500" href="<%= product.url %>" target="_blank">
                 <img src="<%= product.image_url %>" alt="<%= product.name %>" style="width: 100px;"><br>
                 <%= product.name %>
               </a>
@@ -45,4 +45,4 @@
   </table>
 <% end %>
 <br>
-<a href="<%= new_product_path(@product) %>">Вернуться к добавлению товара </a>
+<a href="<%= new_product_path(@product) %>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> ⟵ Вернуться к добавлению товара </a>

@@ -1,15 +1,15 @@
-<h1 class="w-max h-[50px] bg-[red]">Сбор данных о товаре</h1>
+<h1 class="font-semibold text-4xl">Сбор данных о товаре</h1>
 <br>
-<h2 class="font-semibold">Добавление товаров с OZ.BY</h2>
+<h2 >Добавление товаров с OZ.BY</h2>
 
 <%= form_with url: products_path, method: :post, local: true do |form| %>
   <div class="mb-4">
     <%= form.label :urls, "Введите ссылки на товары (каждая ссылка с новой строки):" %>
-    <%= form.text_area :urls, rows: 10 %>
+    <%= form.text_area :urls, rows: 2 %>
   </div>
 
   <div class="mb-6">
-    <%= form.submit "Добавить товары" %>
+    <%= form.submit "Добавить товары", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
   </div>
 <% end %>
 
@@ -24,6 +24,6 @@
 
 <br>
 
-<a class="text-blue-500" href="<%= products_path(@product) %>">Статистика товаров</a>
+<a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="<%= products_path(@product) %>">Статистика товаров</a>
 
 
