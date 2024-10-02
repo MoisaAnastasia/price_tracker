@@ -13,6 +13,9 @@ To run the project, the following is installed on your computer as a dependency:
 - Rails version 7.0.3
 - SQLite version 3.8.0
 - Tailwindcss
+- gem ransack
+- gem pagy
+- gem kaminari
 
 ## Installation
 
@@ -26,8 +29,8 @@ To run the project, the following is installed on your computer as a dependency:
     bundle install
 
 4. Set up the database:
-   rails db:create
-   rails db:migrate
+   - rails db:create
+   - rails db:migrate
 
 ## Launch
 

@@ -61,6 +61,9 @@ group :development do
   gem 'sassc-rails'
   gem "tailwindcss-rails", "~> 2.7"
   gem 'ransack'
+  gem 'pagy'
+  gem 'kaminari' # pagination
+
 
   # gem 'pry-rails'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
