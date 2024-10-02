@@ -60,6 +60,7 @@ group :development do
   gem 'rubocop'
   gem 'sassc-rails'
   gem "tailwindcss-rails", "~> 2.7"
+  gem 'ransack'
 
   # gem 'pry-rails'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]

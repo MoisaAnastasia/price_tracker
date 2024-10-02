@@ -1,10 +1,9 @@
 <h1 class="font-semibold text-4xl">Сбор данных о товаре</h1>
 <br>
-<h2 >Добавление товаров с OZ.BY</h2>
 
 <%= form_with url: products_path, method: :post, local: true do |form| %>
   <div class="mb-4">
-    <%= form.label :urls, "Введите ссылки на товары (каждая ссылка с новой строки):" %>
+    <%= form.label :urls, "Введите ссылки на товары с OZ.BY (каждая ссылка с новой строки):" %><br>
     <%= form.text_area :urls, rows: 2 %>
   </div>
 

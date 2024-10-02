@@ -3,10 +3,11 @@
 <br>
 <%= form_with url: products_path, method: :get, local: true do |form| %>
   <div>
-    <%= form.label :query, "Введите ссылку на товар или текст для поиска:" %><br>
+    <%= form.label :query, "Введите ссылку или название товара:" %><br>
     <%= form.text_field :query %>
   </div>
-  <div><%= form.submit "Найти", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"%></div>
+  <div><%= form.submit "Найти", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-3"%></div>
+  <br>
 <% end %>
 
 <% if @error.present? %>
@@ -14,28 +15,30 @@
 <% end %>
 
 <% if @products.any? %>
-  <table>
-    <thead>
+  <table class="min-w-full border-collapse border border-gray-300">
+    <thead class="bg-gray-100">
       <tr>
-        <th>Товар</th>
+        <th class="border border-gray-300 p-2 text-left">Товар</th>
         <% (1..Time.days_in_month(Time.zone.now.month)).each do |day| %>
-          <th><%= day %></th>
+        <!-- Формируем дату и выводим в формате "день.месяц" -->
+        <th><%= Date.new(Time.zone.now.year, Time.zone.now.month, day).strftime('%d.%m') %></th>
         <% end %>
       </tr>
     </thead>
+
     <tbody>
       <% @products.each do |product| %>
         <tr>
-          <td>
+          <td class="border border-gray-300 p-2">
             <div>
               <a class="text-blue-500" href="<%= product.url %>" target="_blank">
-                <img src="<%= product.image_url %>" alt="<%= product.name %>" style="width: 100px;"><br>
+                <img src="<%= product.image_url %>" alt="<%= product.name %>" style="width: 100px;" class="w-24"><br>
                 <%= product.name %>
               </a>
             </div>
           </td>
           <% (1..Time.days_in_month(Time.zone.now.month)).each do |day| %>
-            <td>
+            <td class="border border-gray-300 p-2 text-center">
               <%= @price_data[product.id][day] %>
             </td>
           <% end %>

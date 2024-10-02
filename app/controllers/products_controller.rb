@@ -54,7 +54,7 @@ class ProductsController < ApplicationController
 
   private
 
-  # Проверяем, является ли запрос ссылкой на OZ.BY
+  # Проверяем, является ли ссылка на OZ.BY
   def valid_ozby_url?(url)
     url =~ %r{\Ahttps?://(www\.)?oz\.by/.+}
   end
@@ -75,7 +75,7 @@ class ProductsController < ApplicationController
         ).pluck(:price)
 
         if day_prices.any?
-          average_price = day_prices.sum / day_prices.size
+          average_price = (day_prices.sum / day_prices.size.to_f).round(2)
           price_data[product.id][day] = average_price
         else
           price_data[product.id][day] = '-'
@@ -84,11 +84,6 @@ class ProductsController < ApplicationController
     end
 
     price_data
-  end
-
-  # Валидация ссылок на OZ.BY
-  def valid_ozby_url?(url)
-    url =~ %r{\Ahttps?://(www\.)?oz\.by/.+}
   end
 
   # Функция для парсинга страницы и получения данных о товаре
